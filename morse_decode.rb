@@ -93,27 +93,31 @@ def decode_word (word)
     combine = ''
    end
  }
+ answer = '';
  $output.each { |n|
- print(decode_char(n))
+ answer += decode_char(n).to_s
  }
+ return answer
 end
 
 def decode_message (message)
   word = ''
   count = 0
   chars = message.split('')
+  msg = ''
   chars.each_with_index { |n, idx|
     if(n==' ' && chars[idx+1]==' ' && chars[idx+2]==' ')
-    decode_word(word)
-    print(' ')
-      word = ''
+     msg += decode_word(word).to_s
+     msg += ' '
+     word = ''
+      else
+        if(idx==chars.length-1)
+         word+=n
+         msg += decode_word(word).to_s
         else
-          if(idx==chars.length-1)
-            word+=n
-          decode_word(word)
-          else
-          word += n
-          end
+         word += n
+        end
     end
   }
+  print(msg)
 end
