@@ -100,22 +100,24 @@ def decode_char(ch)
  return answer
 end
 
-def decode_message (message)
+def decode_message(message)
   word = ''
   count = 0
   chars = message.split('')
   msg = ''
   chars.each_with_index { |n, idx|
-  if n == ' ' && chars[idx + 1] == ' ' && chars[idx + 2] == ' '
-    msg += decode_word(word).to_s
-    msg += ' '
-    word = ''
-  else
-    if idx == chars.length - 1
-      word += n
+    if n == ' ' && chars[idx + 1] == ' ' && chars[idx + 2] == ' '
       msg += decode_word(word).to_s
+      msg += ' '
+      word = ''
     else
-      word += n
+      if idx == chars.length - 1
+        word += n
+        msg += decode_word(word).to_s
+      else
+        word += n
+      end
     end
-  end
-}
+  }
+  print(msg)
+end
