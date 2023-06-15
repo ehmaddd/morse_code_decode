@@ -112,10 +112,10 @@ def decode_message (message)
      word = ''
       else
         if(idx==chars.length-1)
-         word+=n
+        word+=n
          msg += decode_word(word).to_s
         else
-         word += n
+        word += n
         end
     end
   }
