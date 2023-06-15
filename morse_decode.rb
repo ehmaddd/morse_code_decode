@@ -1,5 +1,3 @@
-output = []
-
 MORSE_CODE = {
   '.-' => 'A',
   '-...' => 'B',
@@ -29,54 +27,41 @@ MORSE_CODE = {
   '--..' => 'Z'
 }.freeze
 
-def decode_char(ch)
-  MORSE_CODE[ch]
+def decode_char(char)
+  MORSE_CODE[char]
 end
 
 def decode_word(word)
-  $output = []
-  chars = word.split('')
+  chars = word.chars
   combine = ''
+  output = []
 
-  chars.each_with_index do |n, idx|
-    if n != ' '
-      if idx == chars.length - 1
-        combine += n
-        $output.push(combine)
-      else
-        combine += n
-      end
-    else
-      $output.push(combine) unless combine.empty?
+  chars.each do |n|
+    if n == ' '
+      output.push(combine) unless combine.empty?
       combine = ''
+    else
+      combine += n
     end
   end
 
-  answer = ''
-  $output.each { |n| answer += decode_char(n).to_s }
-  answer
+  output.map { |n| decode_char(n).to_s }.join
 end
 
 def decode_message(message)
+  chars = message.chars
   word = ''
-  count = 0
-  chars = message.split('')
-  msg = ''
+  output = ''
 
-  chars.each_with_index do |n, idx|
-    if n == ' ' && chars[idx + 1] == ' ' && chars[idx + 2] == ' '
-      msg += decode_word(word).to_s
-      msg += ' '
+  chars.each do |n|
+    if n == ' '
+      output += "#{decode_word(word)} " unless word.empty?
       word = ''
     else
-      if idx == chars.length - 1
-        word += n
-        msg += decode_word(word).to_s
-      else
-        word += n
-      end
+      word += n
     end
   end
 
-  print(msg)
+  output += decode_word(word).to_s
+  puts output
 end
