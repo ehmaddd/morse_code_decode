@@ -79,7 +79,7 @@ By following Usage steps, you will get a fully completed functional database.
 - Twitter: [@ehmaddd_pk](https://twitter.com/ehmaddd_pk)
 - LinkedIn: [@ehmaddd](https://www.linkedin.com/in/ehmaddd/)
 
-**MAURICE**
+**MAURICE NDONYI**
 
 - GitHub: [@citec-47](https://github.com/citec-47))
 - Twitter: [@ndonyi4](https://twitter.com/Ndonyi4)
