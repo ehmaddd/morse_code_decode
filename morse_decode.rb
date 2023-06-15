@@ -44,7 +44,7 @@ def decode(sentence)
   sentence_arr = sentence.split('  ')
   decoded_sentence = ''
   sentence_arr.each do |word|
-    decoded_sentence += decode_word(word) + ' '
+    decoded_sentence += "#{decode_word(word)} "
   end
   decoded_sentence.strip
 end
