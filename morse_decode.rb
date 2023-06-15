@@ -105,7 +105,7 @@ def decode_message(message)
   count = 0
   chars = message.split('')
   msg = ''
-  chars.each_with_index { |n, idx|
+  chars.each_with_index do |n, idx|
     if n == ' ' && chars[idx + 1] == ' ' && chars[idx + 2] == ' '
       msg += decode_word(word).to_s
       msg += ' '
@@ -118,6 +118,6 @@ def decode_message(message)
         word += n
       end
     end
-  }
+  end
   print(msg)
 end
