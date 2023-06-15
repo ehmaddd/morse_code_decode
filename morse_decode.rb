@@ -1,3 +1,4 @@
+
 $output = []
 
 def decode_char(ch)
