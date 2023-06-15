@@ -1,4 +1,4 @@
-MORSE_CODE = {
+MORSE_TEXT = {
   '.-' => 'A',
   '-...' => 'B',
   '-.-.' => 'C',
@@ -28,40 +28,25 @@ MORSE_CODE = {
 }.freeze
 
 def decode_char(char)
-  MORSE_CODE[char]
+  MORSE_TEXT[char]
 end
 
-def decode_word(word)
-  chars = word.chars
-  combine = ''
-  output = []
-
-  chars.each do |n|
-    if n == ' '
-      output.push(combine) unless combine.empty?
-      combine = ''
-    else
-      combine += n
-    end
+def decode_word(text)
+  text_arr = text.split
+  decoded_word = ''
+  text_arr.each do |char|
+    decoded_word += decode_char(char)
   end
-
-  output.map { |n| decode_char(n).to_s }.join
+  decoded_word
 end
 
-def decode_message(message)
-  chars = message.chars
-  word = ''
-  output = ''
-
-  chars.each do |n|
-    if n == ' '
-      output += "#{decode_word(word)} " unless word.empty?
-      word = ''
-    else
-      word += n
-    end
+def decode(sentence)
+  sentence_arr = sentence.split('  ')
+  decoded_sentence = ''
+  sentence_arr.each do |word|
+    decoded_sentence += decode_word(word) + ' '
   end
-
-  output += decode_word(word).to_s
-  puts output
+  decoded_sentence.strip
 end
+
+p decode('.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...')
