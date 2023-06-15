@@ -1,82 +1,82 @@
 $output = []
 
 def decode_char(ch)
-  if(ch=='.-')
+   if(ch=='.-')
     return 'A'
-  elsif(ch=='-...')
+   elsif(ch=='-...')
     return 'B'
-  elsif(ch=='-.-.')
+   elsif(ch=='-.-.')
     return 'C'
-  elsif(ch=='-..')
+   elsif(ch=='-..')
     return 'D'
-  elsif(ch=='.')
+   elsif(ch=='.')
     return 'E'
-  elsif(ch=='..-.')
+   elsif(ch=='..-.')
     return 'F'
-  elsif(ch=='--.')
+   elsif(ch=='--.')
     return 'G'
-  elsif(ch=='....')
+   elsif(ch=='....')
     return 'H'
-  elsif(ch=='..')
+   elsif(ch=='..')
     return 'I'
-  elsif(ch=='.---')
+   elsif(ch=='.---')
     return 'J'
-  elsif(ch=='-.-')
+   elsif(ch=='-.-')
     return 'K'
-  elsif(ch=='.-..')
+   elsif(ch=='.-..')
     return 'L'
-  elsif(ch=='--')
+   elsif(ch=='--')
     return 'M'
-  elsif(ch=='-.')
+   elsif(ch=='-.')
     return 'N'
-  elsif(ch=='---')
+   elsif(ch=='---')
     return 'O'
-  elsif(ch=='.--.')
+   elsif(ch=='.--.')
     return 'P'
-  elsif(ch=='--.-')
+   elsif(ch=='--.-')
     return 'Q'
-  elsif(ch=='.-.')
+   elsif(ch=='.-.')
     return 'R'
-  elsif(ch=='...')
+   elsif(ch=='...')
     return 'S'
-  elsif(ch=='-')
+   elsif(ch=='-')
     return 'T'
-  elsif(ch=='..-')
+   elsif(ch=='..-')
     return 'U'
-  elsif(ch=='...-')
+   elsif(ch=='...-')
     return 'V'
-  elsif(ch=='.--')
+   elsif(ch=='.--')
     return 'W'
-  elsif(ch=='-..-')
+   elsif(ch=='-..-')
     return 'X'
-  elsif(ch=='-.--')
+   elsif(ch=='-.--')
     return 'Y'
-  elsif(ch=='--..')
+   elsif(ch=='--..')
     return 'Z'
-  elsif(ch=='.----')
+   elsif(ch=='.----')
     return '1'
-  elsif(ch=='..---')
+   elsif(ch=='..---')
     return '2'
-  elsif(ch=='...--')
+   elsif(ch=='...--')
     return '3'
-  elsif(ch=='....-')
+   elsif(ch=='....-')
     return '4'
-  elsif(ch=='.....')
+   elsif(ch=='.....')
     return '5'
-  elsif(ch=='-...')
+   elsif(ch=='-...')
     return '6'
-  elsif(ch=='--...')
+   elsif(ch=='--...')
     return '7'
-  elsif(ch=='---..')
+   elsif(ch=='---..')
     return '8'
-  elsif(ch=='----.')
+   elsif(ch=='----.')
     return '9'
-  elsif(ch=='-----')
+   elsif(ch=='-----')
     return '0'
-  end
-end
+   end
+ end
 
-def decode_word (word)
+ def decode_word (word)
   $output = []
   chars = word.split('')
   combine = ''
@@ -106,18 +106,17 @@ def decode_message (message)
   chars = message.split('')
   msg = ''
   chars.each_with_index { |n, idx|
-    if(n==' ' && chars[idx+1]==' ' && chars[idx+2]==' ')
-     msg += decode_word(word).to_s
-     msg += ' '
-     word = ''
-      else
-        if(idx==chars.length-1)
-        word+=n
-        msg += decode_word(word).to_s
-      else
-        word += n
-      end
+  if n == ' ' && chars[idx + 1] == ' ' && chars[idx + 2] == ' '
+    msg += decode_word(word).to_s
+    msg += ' '
+    word = ''
+  else
+    if idx == chars.length - 1
+      word += n
+      msg += decode_word(word).to_s
+    else
+      word += n
     end
-  }
-  print(msg)
-end
+  end
+}
+
