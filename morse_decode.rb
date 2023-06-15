@@ -119,4 +119,3 @@ def decode_message (message)
     end
   end
 }
-
